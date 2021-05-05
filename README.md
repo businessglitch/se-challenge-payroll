@@ -166,14 +166,14 @@ Clone the repo:
 Create virtualenv:
 
 if using python2, run
-``virtualenv venv ``
+``virtualenv env ``
 
 if using python 3, run
 ``python3 -m venv env``
      
-    source venv/bin/activate
+    source env/bin/activate
     pip install -r requirements.txt
-    python setup.py develop # or install if you prefer
+    cd backend && python setup.py develop # or install if you prefer
 
 Run the server from root directory
 
