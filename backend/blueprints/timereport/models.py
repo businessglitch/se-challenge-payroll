@@ -10,15 +10,16 @@ class TimeReport(ResourceMixin,db.Model):
     # Timereport entry details
     report_id = db.Column(db.Integer, nullable=False)
     date = db.Column(db.DateTime, nullable=False)
-    hours_worked = db.Column(db.Integer, nullable=False)
+    hours_worked = db.Column(db.Float, nullable=False)
     job_group = db.Column(db.String(5), nullable=False)
     employee_id = db.Column(db.Integer, nullable=False)
 
     def __init__(self, **kwargs):
         # Call Flask-SQLAlchemy's constructor.
         super(TimeReport, self).__init__(**kwargs)
-
-    def get_total_pay(hours, job_group):
+    
+    @classmethod
+    def get_total_pay(cls, hours, job_group):
         """
         Calculates total pay based on hours worked and the job group
         
@@ -32,7 +33,8 @@ class TimeReport(ResourceMixin,db.Model):
         
         return hours * job_groups[job_group]
 
-    def get_payperiod(date):
+    @classmethod
+    def get_payperiod(cls, date):
         """
         Processes date into startDate and endDate of a pay period.
 

@@ -21,6 +21,8 @@ def upload_file():
             report_id = csv_file.filename.split('-')[-1].split('.')[0]
             report_id_record =  TimeReport.query.filter_by(report_id=report_id).first()
             
+            print(csv_file)
+
             if report_id_record:
                 # Return 406 NOT_ACCEPTABLE REQUEST if reportID already exists
                 log.error("Failed to parse report, reportID:{} already exists".format(report_id))
@@ -34,7 +36,7 @@ def upload_file():
                     'report_id': int(report_id),
                     'employee_id': int(row['employee id']),
                     'job_group': row['job group'],
-                    'hours_worked': int(row['hours worked'])
+                    'hours_worked': float(row['hours worked'])
                 }
                 work_record = TimeReport(**params)
                 work_record.save()
@@ -66,7 +68,7 @@ def generate_payrollReport():
     reports_data =  TimeReport.query.order_by(TimeReport.employee_id.asc(), TimeReport.date.asc()).all()
     employees = []
     
-    for report in reports_data:
+    for i, report in enumerate(reports_data):
         total_pay = TimeReport.get_total_pay(report.hours_worked, report.job_group)
 
         # If the employee is not paid, no need to add entry to the report
@@ -92,6 +94,9 @@ def generate_payrollReport():
             }
 
             employees.append(employee)
+        
+        if i == len(reports_data) -1:
+            employees[-1]['amountPaid'] = "${:.2f}".format(employees[-1]['amountPaid']) 
     
     data = {
         'payrollReport': {
