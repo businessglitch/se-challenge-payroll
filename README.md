@@ -155,12 +155,13 @@ Evaluation of your submission will be based on the following criteria.
 
 ## Instruction
 
-ARCHITECTURE
+``ARCHITECTURE``
+
 ![Alt text](./architecture.png?raw=true "Application Architecture")
 
 Clone the repo:
 
-    git clone https://github.com/bonzanini/flask-api-template
+    git clone https://github.com/businessglitch/se-challenge-payroll.git
     cd backend
 
 Create virtualenv:
