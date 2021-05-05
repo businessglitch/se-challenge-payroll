@@ -182,17 +182,20 @@ Run the server from root directory
 
 Try the endpoints:
     
-    File upload endpoint:
-    http://localhost:8000/timereport/upload
-    Can be tested using the sample UI at https://localhost:8000/
+File upload endpoint:
+
+``http://localhost:8000/timereport/upload``
+``Can be tested using the sample UI at https://localhost:8000/``
     
-    PayrollReport endpoint:
-    curl -XGET http://localhost:8000/timereport/payrollReport
+PayrollReport endpoint:
+
+``curl -XGET http://localhost:8000/timereport/payrollReport``
     
 
 
 How did you test that your implementation was correct?
-    ``File Upload: ``
+
+``File Upload: ``
     
 ``To test the file upload end-point, I have created a simple UI for the user to mimic the upload functionality and succfully upload the csv file. This also handles error checking if report with the same ID has already been inserted.``
     
@@ -201,6 +204,7 @@ How did you test that your implementation was correct?
 ``Test classes have been written to cover the complete functionality this endpoint.``
 
 If this application was destined for a production environment, what would you add or change?
+
 `concern 1: To dockerize the application to make it more sustainable`
 
 `concern 2: Add more test cases on the file-upload endpoint ensuring a good test coverage and increase confidence in codebase`
@@ -212,17 +216,24 @@ If this application was destined for a production environment, what would you ad
 `concern 5: Add user logins for securing access to the platform`
 
 What compromises did you have to make as a result of the time constraints of this challenge?
+
 `1: Use Flask Blueprints as a UI rather than REACT framework`
+
 `2: Lack of modulairty within the endpoints codebase`
+
 `3 Upload endpoint not completely robust, cannot be tested with a file being sent form a cURL POST request`
+
 `4: Use Sqlite3 database, since its easy to setup, but maybe of an issue if space is of concern`
 
 
 Codbase Structure
 
 **blueprints:** folder contains files for the front-end aspect of the application
+
 **lib:** folder contains various utils helper files
+
 **database:** folder contains Sqlite3 database
+
 **cli:** folder contains helper CLI commands for running tests
 
     ├── backend
