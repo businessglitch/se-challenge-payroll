@@ -150,3 +150,119 @@ Evaluation of your submission will be based on the following criteria.
    they explained?
 1. Did you separate any concerns in your application? Why or why not?
 1. Does your solution use appropriate data types for the problem as described?
+
+
+
+## Instruction
+
+ARCHITECTURE
+
+
+Clone the repo:
+
+    git clone https://github.com/bonzanini/flask-api-template
+    cd backend
+
+Create virtualenv:
+
+if using python2, run
+``virtualenv venv ``
+
+if using python 3, run
+``python3 -m venv env``
+     
+    source venv/bin/activate
+    pip install -r requirements.txt
+    python setup.py develop # or install if you prefer
+
+Run the server from root directory
+
+    gunicorn -b 0.0.0.0:8000 --access-logfile - "backend.app:create_app()"
+
+Try the endpoints:
+    
+    File upload endpoint:
+    Use the sample UI at https://localhost:8000/
+    
+    PayrollReport endpoint:
+    curl -XGET http://localhost:8000/timereport/payrollReport
+    
+
+
+How did you test that your implementation was correct?
+    ``File Upload: ``
+    
+``To test the file upload end-point, I have created a simple UI for the user to mimic the upload functionality and succfully upload the csv file. This also handles error checking if report with the same ID has already been inserted.``
+    
+``Payroll Report: ``
+
+``Test classes have been written to cover the complete functionality this endpoint.``
+
+If this application was destined for a production environment, what would you add or change?
+`concern 1: To dockerize the application to make it more sustainable`
+
+`concern 2: Add more test cases on the file-upload endpoint ensuring a good test coverage and increase confidence in codebase`
+
+`concern 3: Switch Front-End structure to REACT for modularity and scalability`
+
+`concern 4: Move database to the cloud rather than having it locally stored`
+
+`concern 5: Add user logins for securing access to the platform`
+
+What compromises did you have to make as a result of the time constraints of this challenge?
+`1: Use Flask Blueprints as a UI rather than REACT framework`
+`2: Lack of modulairty within the endpoints codebase`
+`3 Upload endpoint not completely robust, cannot be tested with a file being sent form a cURL POST request`
+`4: Use Sqlite3 database, since its easy to setup, but maybe of an issue if space is of concern`
+
+
+Codbase Structure
+
+**blueprints:** folder contains files for the front-end aspect of the application
+**lib:** folder contains various utils helper files
+**database:** folder contains Sqlite3 database
+**cli:** folder contains helper CLI commands for running tests
+
+    ├── backend
+    │ ├── app.py
+    │ ├── blueprints
+    │ │ ├── page
+    │ │ │ ├── templates
+    │ │ │ │ └── page
+    │ │ │ │ └── home.html
+    │ │ │ └── views.py
+    │ │ └── timereport
+    │ │ ├── __init__.py
+    │ │ └── models.py
+    │ ├── database
+    │ │ ├── payroll.db
+    │ │ └── payroll.db_test
+    │ ├── extensions.py
+    │ ├── lib
+    │ │ ├── tests.py
+    │ │ ├── util_json.py
+    │ │ ├── util_logger.py
+    │ │ └── util_sqlalchemy.py
+    │ ├── static
+    │ │ └── css
+    │ │ └── main.css
+    │ ├── templates
+    │ │ └── layouts
+    │ │ └── base.html
+    │ └── tests
+    │ ├── __init__.py
+    │ ├── conftest.py
+    │ ├── pages
+    │ │ ├── __init__.py
+    │ │ └── test_pages.py
+    │ └── timereports
+    │ ├── __init__.py
+    │ ├── test_models.py
+    │ └── test_views.py
+    ├── config
+    │ ├── __init__.py
+    │ ├── sample_data
+    │ │ ├── time-report-42.csv
+    │ │ └── time-report-43.csv
+    │ └── settings.py
+    └── requirements.txt

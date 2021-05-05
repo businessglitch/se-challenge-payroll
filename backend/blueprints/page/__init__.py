@@ -1,0 +1,1 @@
+from backend.blueprints.page.views import page

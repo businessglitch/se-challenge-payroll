@@ -1,0 +1,8 @@
+from flask import url_for
+from backend.lib.tests import ViewTestMixin
+
+class TestPage(ViewTestMixin):
+    def test_home_page(self):
+        "Home page should respond with a success 200"
+        response = self.client.get(url_for('page.home'))
+        assert response.status_code == 200

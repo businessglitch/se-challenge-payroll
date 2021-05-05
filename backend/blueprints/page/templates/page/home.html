@@ -1,0 +1,22 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %} Wave App Demo Code {% endblock%}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <form action="/timereport/upload" method="POST" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="">Upload Time Report</label>
+                        <div class="custom-file">
+                            <input type="file"  accept=".csv" name="timereport" id="timeReportInput" class="custom-file-input"/>
+                            <label class="custom-file-label" for="timereport">Select Time Report ... </label>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" type="submit"> Upload Time Report</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

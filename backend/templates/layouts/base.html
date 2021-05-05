@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="{% block meta_description %}{% endblock %}">
+    
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/main.css') }}"
+    >
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>{% block title %} {% endblock %}</title>
+</head>
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="nav-header">
+                <a href="{{ url_for('page.home')}}}" target="_blank" rel="noopener noreferrer">
+                    <img src="https://www.waveapps.com/assets/img/logos/Wave_logo.svg"
+                        class="img_responsive text-center"
+                        width="229" height="50" title="Wave" alt="wave-app logo"
+                    />
+                </a>
+            </div>
+        </div>
+    </nav>
+    <main class="container">
+        <div class="md-margin-top">
+            {% block heading %}{% endblock %}
+        </div>
+        {% block body %}{% endblock %}
+    </main>
+    <footer class="footer text-center">
+        <div class="container">
+            <p>Designed and Developed with ❤️ by Fahad Hayat</p>
+        </div>
+    </footer>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>  
+</body>
+</html>
