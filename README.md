@@ -156,7 +156,7 @@ Evaluation of your submission will be based on the following criteria.
 ## Instruction
 
 ARCHITECTURE
-
+![Alt text](./architecture.png?raw=true "Application Architecture")
 
 Clone the repo:
 
@@ -182,7 +182,8 @@ Run the server from root directory
 Try the endpoints:
     
     File upload endpoint:
-    Use the sample UI at https://localhost:8000/
+    http://localhost:8000/timereport/upload
+    Can be tested using the sample UI at https://localhost:8000/
     
     PayrollReport endpoint:
     curl -XGET http://localhost:8000/timereport/payrollReport
